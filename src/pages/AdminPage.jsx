@@ -50,6 +50,7 @@ import useConfirmDelete from "../hooks/useConfirmDelete";
 import AdminLeadershipManager from "../components/AdminLeadershipManager";
 import AdminBlogManager from "../components/AdminBlogManager";
 import AdminPortfolioManager from "../components/AdminPortfolioManager";
+import AdminHomeStatsManager from "../components/AdminHomeStatsManager";
 
 const STATUS_LABELS = {
   new: "New",
@@ -72,6 +73,7 @@ const VIEW_TITLES = {
   leadership: "People hierarchy",
   blogs: "Blog management",
   portfolio: "Portfolio management",
+  stats: "Homepage stats",
 };
 const OPENINGS_PER_PAGE = 6;
 function AdminPage() {
@@ -570,6 +572,14 @@ function AdminPage() {
             <Newspaper size={18} />
             <span className={styles.navText}>Blogs</span>
           </button>
+          <button
+            className={activeView === "stats" ? styles.navActive : ""}
+            onClick={() => changeView("stats")}
+            title="Homepage stats"
+          >
+            <Activity size={18} />
+            <span className={styles.navText}>Homepage stats</span>
+          </button>
         </nav>
         <footer className={styles.sidebarFooter}>
           <button className={styles.logout} onClick={logout} title="Log out">
@@ -1058,6 +1068,8 @@ function AdminPage() {
           <AdminBlogManager confirmDelete={confirmDelete} />
         ) : activeView === "leadership" ? (
           <AdminLeadershipManager confirmDelete={confirmDelete} />
+        ) : activeView === "stats" ? (
+          <AdminHomeStatsManager confirmDelete={confirmDelete} />
         ) : (
           <div className={styles.openingLayout}>
             <div className={styles.openingControlsPanel}>

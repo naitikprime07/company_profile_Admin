@@ -340,3 +340,14 @@ export const uploadTeamImage = async (file, previousImage = "") => {
     );
   return signed.fileUrl;
 };
+
+export const getAdminHomeStats = () => requestOnce("home-stats", "/admin/home-stats");
+export const createHomeStat = (data) =>
+  request("/admin/home-stats", { method: "POST", body: JSON.stringify(data) });
+export const updateHomeStat = (id, data) =>
+  request(`/admin/home-stats/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+  });
+export const deleteHomeStat = (id) =>
+  request(`/admin/home-stats/${id}`, { method: "DELETE" });
