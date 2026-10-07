@@ -1,0 +1,196 @@
+:root {
+  --font-primary: "Poppins", sans-serif;
+  --heading-gradient: linear-gradient(
+    105deg,
+    #68dcff 0%,
+    #427ff5 20%,
+    #705cf6 36%,
+    #0a1830 48%,
+    #132b54 52%,
+    #705cf6 64%,
+    #427ff5 80%,
+    #68dcff 100%
+  );
+}
+
+html,
+body,
+#root,
+.site-shell {
+  font-family: var(--font-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: var(--font-primary) !important;
+}
+html {
+  background: #0b0f19;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+body.menu-open {
+  overflow: hidden;
+}
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-primary) !important;
+}
+a {
+  text-decoration: none;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 2px solid #65ddff;
+  outline-offset: 4px;
+}
+
+/* Admin searches provide their own single, consistently styled clear action. */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Keep long user-managed content inside its container throughout the app. */
+:where(h1, h2, h3, h4, h5, h6, p, li, td, th, a, span, strong, small, label) {
+  overflow-wrap: anywhere;
+}
+
+/* One Poppins hierarchy across public pages, admin pages, forms, and rich text. */
+:where(h1, h2, h3, h4, h5, h6) {
+  font-size-adjust: 0.48;
+  font-family: var(--font-primary) !important;
+  font-style: normal;
+  text-wrap: balance;
+}
+
+.public-shell h1 {
+  color: #f5f8ff;
+  font-weight: 400 !important;
+  letter-spacing: -0.045em;
+}
+
+/* Shared public display scale: large enough to lead, capped so headings never
+   overwhelm a laptop viewport or escape their layout column. */
+.public-shell main > section:first-of-type h1 {
+  font-size: clamp(2.5rem, 4.6vw, 4rem) !important;
+  line-height: 1.04 !important;
+  margin-inline: 0;
+  max-width: min(100%, 18ch);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  white-space: normal;
+}
+
+/* Apply the cyan shade only to deliberately selected words or phrases. */
+.text-gradient {
+  background: var(--heading-gradient) !important;
+  background-size: 260% 100% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: prime-text-flow 4.8s linear infinite;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  filter: drop-shadow(0 0 .8rem rgb(69 128 255 / 10%));
+}
+
+/* Hero highlights remain inline by default; individual layouts can make them
+   a separate line when their composition requires it. */
+h1 > .text-gradient {
+  display: inline;
+}
+
+@keyframes prime-text-flow {
+  from {
+    background-position: 100% 50%;
+  }
+
+  to {
+    background-position: -160% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient {
+    animation: none;
+    background-position: 50% 50% !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .public-shell main > section:first-of-type h1 {
+    font-size: clamp(2.15rem, 10vw, 3rem) !important;
+    letter-spacing: -0.035em;
+    line-height: 1.08 !important;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .public-shell main > section:first-of-type h1 {
+    font-size: clamp(2rem, 9.5vw, 2.55rem) !important;
+  }
+}
+
+.public-shell :where(h2, h3) {
+  color: #eff6ff;
+  font-weight: 500 !important;
+}
+
+.public-shell :where(h4, h5, h6) {
+  color: #e7f2ff;
+  font-weight: 500 !important;
+}
+
+.admin-shell :where(h1, h2, h3, h4, h5, h6) {
+  color: #eff6ff;
+  font-weight: 500 !important;
+}
+
+:where(h1, h2, h3, h4, h5, h6) :where(span, strong, b) {
+  font-weight: inherit !important;
+}
+
+/* Shared Poppins weight scale for cards, tables, controls, and forms. */
+:where(strong, b, th) {
+  font-weight: 500 !important;
+}
+
+:where(button, [role="button"], input[type="button"], input[type="submit"]) {
+  font-weight: 500 !important;
+}
+
+:where(label, legend) {
+  font-weight: 400 !important;
+}
+
+form :where(h1, h2, h3, h4, h5, h6) {
+  font-size-adjust: 0.46;
+  font-weight: 500 !important;
+}
+
+form :where(strong, b) {
+  font-weight: 500 !important;
+}
+
+/* User-authored article markup may contain legacy face attributes or inline
+   family declarations; keep it on the same Poppins system as the application. */
+:where([contenteditable="true"], [contenteditable="true"] *, article, article *) {
+  font-family: var(--font-primary) !important;
+}

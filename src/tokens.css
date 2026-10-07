@@ -1,0 +1,27 @@
+/* Design tokens shared by the admin UI (extracted from the marketing app's
+   App.css :root so admin modules like AdminPage.module.css resolve var(--*)). */
+:root {
+  --bg: #080d18;
+  --bg-soft: #0e1524;
+  --surface: #131d2e;
+  --card: #182338;
+  --line: rgb(255 255 255 / 9%);
+  --text: #f6f9ff;
+  --text-soft: #b5c0d0;
+  --muted: #8592a7;
+  --accent: #2f7df6;
+  --accent-bright: #72adff;
+  --cyan: #5bd5ff;
+  --button-bg: linear-gradient(110deg, #1858b8, #2178c9 62%, #248eaa);
+  --button-bg-hover: linear-gradient(110deg, #1d66cf, #2888da 62%, #2ba2bd);
+  --button-border: rgb(114 205 255 / 28%);
+  --button-shadow: 0 12px 28px rgb(10 58 130 / 34%);
+  --container: 1320px;
+}
+
+.site-shell {
+  background: var(--bg);
+  color: var(--text);
+  min-width: 320px;
+  overflow: clip;
+}

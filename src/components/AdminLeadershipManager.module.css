@@ -1,0 +1,487 @@
+.workspace {
+    background: #0d1a2d;
+    border: 1px solid #29405d;
+    border-radius: 1rem;
+    min-height: 0;
+    overflow: auto;
+    padding: 1.5rem
+}
+
+.workspace>header,
+.memberHeader,
+.workspace footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between
+}
+
+.workspace h2,
+.workspace h3,
+.workspace p {
+    margin: 0
+}
+
+.workspace p {
+    color: #7890a9;
+    font-size: .68rem;
+    margin-top: .25rem
+}
+
+.workspace button {
+    align-items: center;
+    background: #133252;
+    border: 1px solid #2f6288;
+    border-radius: .6rem;
+    color: #69d7ff;
+    cursor: pointer;
+    display: flex;
+    font-size: .66rem;
+    gap: .4rem;
+    padding: .7rem .85rem
+}
+
+.workspace button:disabled {
+    cursor: not-allowed;
+    opacity: .45
+}
+
+.tabs {
+    display: flex;
+    gap: .6rem;
+    margin: 1.2rem 0
+}
+
+.tabs button {
+    background: #0a1728;
+    border-color: #263e5a;
+    color: #8da2ba
+}
+
+.tabs .active {
+    background: #17486d;
+    border-color: #3f8cba;
+    color: #78ddff
+}
+
+.message {
+    background: #10243a;
+    border: 1px solid #2c4e6e;
+    border-radius: .65rem;
+    color: #91dfff !important;
+    padding: .75rem
+}
+
+.workspace form {
+    display: grid;
+    gap: 1.2rem;
+    margin-top: 1.2rem
+}
+
+.sectionHead {
+    align-items: center;
+    border-top: 1px solid #263b55;
+    display: flex;
+    gap: .7rem;
+    padding-top: 1.2rem
+}
+
+.sectionHead>svg {
+    color: #5bd5ff
+}
+
+.profileGrid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 190px 1fr
+}
+
+.imageField,
+.memberImage {
+    align-items: center;
+    background: #091625;
+    border: 1px dashed #345675;
+    border-radius: .8rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    justify-content: center;
+    min-height: 190px;
+    overflow: hidden;
+    position: relative
+}
+
+.imageField input,
+.memberImage input {
+    display: none
+}
+
+.imageField img,
+.memberImage img {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    position: absolute;
+    width: 100%
+}
+
+.imageField span,
+.memberImage span {
+    background: rgb(4 12 23/82%);
+    border-radius: .4rem;
+    bottom: .6rem;
+    color: #70d9ff;
+    font-size: .58rem;
+    padding: .45rem;
+    position: absolute;
+    z-index: 1
+}
+
+.fields,
+.fieldsWide {
+    display: grid;
+    gap: .8rem;
+    grid-template-columns: 1fr 1fr
+}
+
+.fieldsWide {
+    grid-template-columns: 1fr 1fr .6fr
+}
+
+.workspace label {
+    color: #91a5bb;
+    display: grid;
+    font-size: .58rem;
+    gap: .4rem
+}
+
+.workspace input,
+.workspace textarea,
+.workspace select {
+    background: #0a1728;
+    border: 1px solid #29425f;
+    border-radius: .55rem;
+    color: #ecf6ff;
+    font: 500 .72rem Poppins, sans-serif;
+    min-width: 0;
+    padding: .7rem;
+    resize: vertical
+}
+
+.workspace textarea {
+    min-height: 75px
+}
+
+.full {
+    grid-column: 1/-1
+}
+
+.members {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr
+}
+
+.members article {
+    background: #0a1728;
+    border: 1px solid #253e59;
+    border-radius: .8rem;
+    display: grid;
+    gap: .8rem;
+    grid-template-columns: 100px 1fr;
+    padding: 1rem;
+    position: relative
+}
+
+.memberImage {
+    min-height: 120px
+}
+
+.members article>div {
+    display: grid;
+    gap: .6rem;
+    grid-template-columns: 1fr 1fr
+}
+
+.members article>div label:last-child {
+    grid-column: 1/-1
+}
+
+.removeMember {
+    padding: .35rem !important;
+    position: absolute;
+    right: .55rem;
+    top: .55rem;
+    z-index: 2
+}
+
+.workspace footer {
+    border-top: 1px solid #263b55;
+    padding-top: 1.2rem
+}
+
+.workspace footer .delete {
+    background: #3a1825;
+    border-color: #713047;
+    color: #ff8fa8
+}
+
+.workspace footer .save {
+    background: #18547b;
+    border-color: #3889b6;
+    color: #fff
+}
+
+.state {
+    color: #7e94ad;
+    padding: 2rem
+}
+
+@media(max-width:900px) {
+
+    .profileGrid,
+    .members {
+        grid-template-columns: 1fr
+    }
+
+    .imageField {
+        max-width: 220px
+    }
+
+    .fieldsWide {
+        grid-template-columns: 1fr 1fr
+    }
+}
+
+@media(max-width:600px) {
+
+    .fields,
+    .fieldsWide {
+        grid-template-columns: 1fr
+    }
+
+    .members article {
+        grid-template-columns: 1fr
+    }
+
+    .memberImage {
+        max-width: 120px
+    }
+
+    .full {
+        grid-column: auto
+    }
+}
+
+/* Simplified hierarchy editor */
+.workspace {
+    padding: 1.25rem 1.4rem
+}
+
+.workspace form {
+    gap: 1rem
+}
+
+.sectionHead {
+    background: #0a1728;
+    border: 1px solid #263e59;
+    border-radius: .75rem;
+    padding: .9rem 1rem
+}
+
+.ownerProfile {
+    align-items: start;
+    background: #0a1728;
+    border: 1px solid #263e59;
+    border-radius: .8rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 120px minmax(0, 1fr);
+    padding: 1rem
+}
+
+.ownerImage {
+    align-items: center !important;
+    aspect-ratio: 1/1;
+    background: #10223a;
+    border: 1px dashed #3a5c79 !important;
+    border-radius: .75rem;
+    cursor: pointer;
+    display: flex !important;
+    justify-content: center;
+    overflow: hidden;
+    position: relative
+}
+
+.imageControl {
+    isolation: isolate;
+    overflow: visible;
+    position: relative;
+    width: 100%
+}
+
+.imageControl .ownerImage {
+    height: 100%;
+    width: 100%
+}
+
+.ownerImage input {
+    display: none
+}
+
+.ownerImage img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    width: 100%
+}
+
+.ownerImage>span {
+    align-items: center;
+    background: rgb(4 12 23/85%);
+    bottom: .4rem;
+    color: #70d9ff;
+    display: flex;
+    font-size: .5rem;
+    gap: .3rem;
+    left: .4rem;
+    padding: .35rem;
+    position: absolute;
+    right: .4rem;
+    justify-content: center
+}
+
+.workspace .imageRemove {
+    align-items: center;
+    background: #5b182b;
+    border: 1px solid #b44260;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgb(21 3 10/55%);
+    color: #ff9ab1;
+    cursor: pointer;
+    display: flex;
+    flex: 0 0 27px;
+    height: 27px;
+    justify-content: center;
+    padding: 0 !important;
+    position: absolute;
+    right: -13.5px;
+    top: -13.5px;
+    transition: .2s;
+    width: 27px;
+    z-index: 8
+}
+
+.workspace .imageRemove:hover {
+    background: #76243b;
+    border-color: #e35e7f;
+    color: #fff;
+    box-shadow: 0 5px 14px rgb(83 13 35/45%);
+    transform: scale(1.08)
+}
+
+.workspace .imageRemove svg {
+    display: block;
+    height: 13px;
+    pointer-events: none;
+    stroke-width: 2;
+    width: 13px
+}
+
+.workspace .imageRemove:focus-visible {
+    outline: 2px solid #ff8da8;
+    outline-offset: 2px
+}
+
+.ownerFields {
+    display: grid;
+    gap: .85rem;
+    grid-template-columns: 1fr 1fr
+}
+
+.ownerFields label:last-child {
+    grid-column: 1/-1
+}
+
+.ownerFields textarea {
+    min-height: 64px
+}
+
+.workspace label>small {
+    color: #65809b;
+    font-size: .52rem;
+    justify-self: end;
+    margin-top: -.2rem
+}
+
+.memberHeader {
+    border-top: 1px solid #263b55;
+    margin-top: .25rem;
+    padding-top: 1rem
+}
+
+.members {
+    gap: .8rem
+}
+
+.workspace footer {
+    background: #0d1a2d;
+    bottom: 0;
+    position: sticky;
+    z-index: 3
+}
+
+@media(max-width:760px) {
+    .ownerProfile {
+        grid-template-columns: 90px minmax(0, 1fr)
+    }
+
+    .ownerFields {
+        grid-template-columns: 1fr
+    }
+
+    .ownerFields label:last-child {
+        grid-column: auto
+    }
+}
+
+@media(max-width:520px) {
+    .ownerProfile {
+        grid-template-columns: 1fr
+    }
+
+    .ownerImage {
+        width: 100px
+    }
+}
+
+/* Dark, compact scrollbar for the hierarchy editor. */
+.workspace {
+    scrollbar-color: #315f7f #091523;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin
+}
+
+.workspace::-webkit-scrollbar {
+    height: 8px;
+    width: 8px
+}
+
+.workspace::-webkit-scrollbar-track {
+    background: #091523;
+    border-radius: 999px
+}
+
+.workspace::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #315f7f, #234661);
+    border: 2px solid #091523;
+    border-radius: 999px
+}
+
+.workspace::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #4b8db4, #2f6b8e)
+}
+
+.workspace::-webkit-scrollbar-corner {
+    background: #091523
+}

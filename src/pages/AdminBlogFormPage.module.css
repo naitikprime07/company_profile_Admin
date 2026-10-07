@@ -1,0 +1,886 @@
+.page {
+    background: radial-gradient(circle at 85% 5%, rgb(47 125 246/9%), transparent 28rem), #07101e;
+    color: #edf5ff;
+    min-height: 100vh
+}
+
+.page>header {
+    align-items: center;
+    background: #0b1626;
+    border-bottom: 1px solid #20344e;
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 4vw, 4rem)
+}
+
+.page>header button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #69d9ff;
+    cursor: pointer;
+    display: flex;
+    font-size: .64rem;
+    gap: .5rem;
+    padding: .45rem 0
+}
+
+.page>header>div {
+    align-items: center;
+    display: flex;
+    font-size: .76rem;
+    font-weight: 500;
+    gap: .5rem
+}
+
+.page>header svg {
+    color: #69d9ff
+}
+
+.content {
+    margin: auto;
+    max-width: 1480px;
+    padding: 2rem clamp(1rem, 3vw, 2rem) 4rem
+}
+
+.heading {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem
+}
+
+.heading>span {
+    align-items: center;
+    background: #163553;
+    border: 1px solid #315b7d;
+    border-radius: .75rem;
+    color: #69d9ff;
+    display: flex;
+    flex: 0 0 auto;
+    height: 3rem;
+    justify-content: center;
+    width: 3rem
+}
+
+.heading small {
+    color: #61d7ff;
+    font-size: .5rem;
+    letter-spacing: .12em
+}
+
+.heading h1 {
+    font-size: 1.5rem;
+    margin: .25rem 0
+}
+
+.heading p {
+    color: #8599af;
+    font-size: .68rem;
+    margin: 0
+}
+
+.page form {
+    background: #0d1a2c;
+    border: 1px solid #29415d;
+    border-radius: 1rem;
+    padding: 1.2rem
+}
+
+.editor {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: minmax(0, 1fr) 260px
+}
+
+.fields {
+    display: grid;
+    gap: .9rem;
+    grid-template-columns: 1fr 1fr
+}
+
+.fields label {
+    color: #91a6bb;
+    display: grid;
+    font-size: .58rem;
+    gap: .4rem;
+    position: relative
+}
+
+.fields label>small {
+    color: #637e98;
+    position: absolute;
+    right: 0
+}
+
+.fields input,
+.fields select,
+.fields textarea {
+    background: #091625;
+    border: 1px solid #29435f;
+    border-radius: .55rem;
+    color: #edf6ff;
+    font: 500 .7rem Poppins, sans-serif;
+    padding: .75rem;
+    resize: vertical
+}
+
+.fields select {
+    min-height: 2.7rem
+}
+
+.fields input[type="checkbox"] {
+    accent-color: #55d5ff;
+    height: 1rem;
+    min-height: 0;
+    width: 1rem
+}
+
+.fields textarea {
+    min-height: 90px;
+    scrollbar-color: #376d91 #081321;
+    scrollbar-width: thin
+}
+
+.fields textarea::-webkit-scrollbar {
+    height: 7px;
+    width: 7px
+}
+
+.fields textarea::-webkit-scrollbar-track {
+    background: #081321;
+    border-radius: 999px
+}
+
+.fields textarea::-webkit-scrollbar-thumb {
+    background: #376d91;
+    border: 1px solid #081321;
+    border-radius: 999px
+}
+
+.fields textarea::-webkit-scrollbar-thumb:hover {
+    background: #52a6cf
+}
+
+.fields textarea::-webkit-scrollbar-corner {
+    background: #081321
+}
+
+.fields .content {
+    line-height: 1.7;
+    min-height: 320px
+}
+
+.full {
+    grid-column: 1/-1
+}
+
+.formSectionTitle {
+    align-items: center;
+    background: linear-gradient(90deg, #10253c, #0b1a2b);
+    border: 1px solid #294861;
+    border-radius: .7rem;
+    display: flex;
+    gap: .75rem;
+    grid-column: 1/-1;
+    margin-top: .25rem;
+    padding: .75rem .85rem
+}
+
+.formSectionTitle>span {
+    align-items: center;
+    background: #174566;
+    border: 1px solid #377b9e;
+    border-radius: 50%;
+    color: #74dcff;
+    display: flex;
+    flex: 0 0 auto;
+    font: 500 .58rem Poppins, sans-serif;
+    height: 30px;
+    justify-content: center;
+    width: 30px
+}
+
+.formSectionTitle h2 {
+    color: #edf6ff;
+    font-size: .78rem;
+    font-weight: 500;
+    margin: 0
+}
+
+.formSectionTitle p {
+    color: #7892aa;
+    font-size: .52rem;
+    margin: .18rem 0 0
+}
+
+.authorImageField {
+    align-self: start;
+    color: #91a6bb;
+    display: grid;
+    font-size: .58rem;
+    gap: .4rem;
+    max-width: 96px;
+    width: 100%
+}
+
+.authorImageUpload {
+    align-items: center;
+    background: #091625;
+    border: 1px dashed #3a5d7c;
+    border-radius: .65rem;
+    color: #70d9ff !important;
+    cursor: pointer;
+    display: flex !important;
+    height: 112px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 90px
+}
+
+.authorImageUpload img {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: center top;
+    position: absolute;
+    width: 100%
+}
+
+.authorImageUpload>svg {
+    position: relative;
+    z-index: 1
+}
+
+.authorImageUpload b {
+    background: rgb(4 13 24/88%);
+    bottom: .3rem;
+    color: #70d9ff;
+    font-size: .48rem;
+    font-weight: 500;
+    left: .3rem;
+    padding: .3rem .2rem;
+    position: absolute;
+    right: .3rem;
+    text-align: center;
+    z-index: 2
+}
+
+.authorImageUpload small {
+    display: none
+}
+
+.authorImageUpload input {
+    display: none
+}
+
+.imageUploadWrap {
+    isolation: isolate;
+    overflow: visible;
+    position: relative
+}
+
+.removeImage {
+    align-items: center;
+    background: #511b2a;
+    border: 1px solid #963b55;
+    border-radius: 50%;
+    color: #ff8ba8;
+    cursor: pointer;
+    display: flex;
+    box-shadow: 0 4px 12px rgb(21 3 10/55%);
+    height: 27px;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    right: -13.5px;
+    top: -13.5px;
+    transition: .2s;
+    width: 27px;
+    z-index: 3
+}
+
+.removeImage:hover {
+    background: #71223a;
+    color: #fff;
+    box-shadow: 0 5px 14px rgb(83 13 35/45%);
+    transform: scale(1.08)
+}
+
+.removeImage svg {
+    height: 13px;
+    width: 13px
+}
+
+.switches {
+    display: flex;
+    gap: 1rem;
+    grid-column: 1/-1
+}
+
+.switches label {
+    align-items: center;
+    background: #0a1727;
+    border: 1px solid #29425d;
+    border-radius: .55rem;
+    display: flex;
+    flex-direction: row;
+    padding: .65rem
+}
+
+.cover {
+    align-items: center;
+    aspect-ratio: 1.45;
+    background: #091625;
+    border: 1px dashed #3a5d7c;
+    border-radius: .8rem;
+    color: #5bd5ff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative
+}
+
+.cover input {
+    display: none
+}
+
+.cover img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%
+}
+
+.cover span {
+    background: rgb(4 13 24/85%);
+    bottom: .5rem;
+    color: #78dcff;
+    font-size: .55rem;
+    left: .5rem;
+    padding: .45rem;
+    position: absolute;
+    right: .5rem;
+    text-align: center
+}
+
+.editor aside p {
+    color: #607b95;
+    font-size: .52rem;
+    text-align: center
+}
+
+.message {
+    background: #102844;
+    border: 1px solid #326283;
+    border-radius: .6rem;
+    color: #8ee0ff;
+    padding: .75rem
+}
+
+.page footer {
+    border-top: 1px solid #29405a;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.2rem;
+    padding-top: 1rem
+}
+
+.page footer button {
+    align-items: center;
+    background: #1d6089;
+    border: 1px solid #4294bd;
+    border-radius: .6rem;
+    color: #fff;
+    display: flex;
+    gap: .4rem;
+    padding: .75rem 1rem
+}
+
+@media(max-width:850px) {
+    .editor {
+        grid-template-columns: 1fr
+    }
+
+    .editor aside {
+        max-width: 320px
+    }
+}
+
+@media(max-width:600px) {
+    .page>header {
+        height: 58px;
+        padding-inline: 1rem
+    }
+
+    .page>header>div span {
+        display: none
+    }
+
+    .content {
+        padding: 1.25rem .75rem 2.5rem
+    }
+
+    .heading {
+        align-items: flex-start
+    }
+
+    .heading h1 {
+        font-size: 1.3rem
+    }
+
+    .fields {
+        grid-template-columns: 1fr
+    }
+
+    .full,
+    .switches {
+        grid-column: auto
+    }
+
+    .switches {
+        flex-direction: column
+    }
+}
+
+.richField {
+    display: grid;
+    gap: .4rem;
+    position: relative
+}
+
+.richField>span {
+    color: #91a6bb;
+    font-size: .58rem
+}
+
+.richField>small {
+    color: #637e98;
+    font-size: .52rem;
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.portfolioPreview {
+    align-self: start;
+    background: linear-gradient(155deg, #10243b, #091625);
+    border: 1px solid #31506e;
+    border-radius: .85rem;
+    display: grid;
+    gap: .75rem;
+    overflow: hidden;
+    padding: .85rem;
+    position: sticky;
+    top: 1rem
+}
+
+.portfolioPreview>small {
+    color: #63d8ff;
+    font-size: .48rem;
+    letter-spacing: .14em
+}
+
+.portfolioPreviewMedia {
+    align-items: center;
+    background: #071220;
+    border: 1px solid #294762;
+    border-radius: .65rem;
+    color: #67d9ff;
+    display: flex;
+    height: 155px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative
+}
+
+.portfolioPreviewMedia img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%
+}
+
+.portfolioPreviewMedia span {
+    background: rgb(5 16 29 / 88%);
+    border: 1px solid #3c7898;
+    border-radius: 999px;
+    bottom: .55rem;
+    font-size: .46rem;
+    left: .55rem;
+    padding: .3rem .45rem;
+    position: absolute
+}
+
+.portfolioPreview h2 {
+    font-size: .9rem;
+    font-weight: 550;
+    margin: 0;
+    overflow-wrap: anywhere
+}
+
+.portfolioPreview>p {
+    color: #8298ae;
+    font-size: .58rem;
+    line-height: 1.65;
+    margin: 0;
+    overflow-wrap: anywhere
+}
+
+.portfolioPreview dl {
+    display: grid;
+    gap: .5rem;
+    margin: 0
+}
+
+.portfolioPreview dl div {
+    border-top: 1px solid #253d56;
+    display: grid;
+    gap: .15rem;
+    padding-top: .5rem
+}
+
+.portfolioPreview dt {
+    color: #5e7891;
+    font-size: .46rem;
+    text-transform: uppercase
+}
+
+.portfolioPreview dd {
+    color: #c9d8e7;
+    font-size: .55rem;
+    margin: 0;
+    overflow-wrap: anywhere
+}
+
+.previewPublished,
+.previewDraft {
+    border-radius: 999px;
+    font-size: .5rem;
+    justify-self: start;
+    padding: .35rem .55rem
+}
+
+.portfolioForm {
+    padding: clamp(1rem, 2vw, 1.5rem) !important
+}
+
+.portfolioForm .editor {
+    grid-template-columns: minmax(0, 1fr) 300px
+}
+
+.portfolioForm .fields {
+    gap: 1rem 1.1rem
+}
+
+.portfolioForm .fields label,
+.portfolioImageField>span {
+    color: #a9bbcd;
+    font-size: .66rem;
+    font-weight: 450
+}
+
+.portfolioForm .fields input,
+.portfolioForm .fields select,
+.portfolioForm .fields textarea {
+    font-size: .72rem;
+    font-weight: 400;
+    min-height: 44px
+}
+
+.portfolioForm .formSectionTitle h2 {
+    font-size: .82rem
+}
+
+.portfolioForm .formSectionTitle p {
+    font-size: .57rem
+}
+
+.portfolioImageField {
+    display: grid;
+    gap: .42rem
+}
+
+.portfolioImageFields {
+    display: grid;
+    gap: .7rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0
+}
+
+.posterImageField {
+    grid-column: 1/-1
+}
+
+.portfolioMediaGrid {
+    align-items: start;
+    background: rgb(7 20 34 / 55%);
+    border: 1px solid #213a54;
+    border-radius: .8rem;
+    display: grid;
+    gap: 1rem;
+    grid-column: 1/-1;
+    grid-template-columns: minmax(260px, .95fr) minmax(300px, 1.05fr);
+    padding: .9rem
+}
+
+.portfolioMediaSettings {
+    align-content: start;
+    display: grid;
+    gap: .85rem;
+    min-width: 0
+}
+
+.portfolioMediaSettings>label {
+    align-content: start
+}
+
+.portfolioImageBox {
+    align-items: center;
+    background: #081522;
+    border: 1px dashed #3a617f;
+    border-radius: .7rem;
+    color: #65d8ff;
+    display: flex;
+    min-height: 160px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative
+}
+
+.posterImageBox {
+    aspect-ratio: 16/9;
+    max-height: 190px
+}
+
+.detailImageBox {
+    min-height: 0;
+    transition: aspect-ratio .25s ease, max-width .25s ease
+}
+
+.webDetailImageBox {
+    aspect-ratio: 16/9;
+    max-height: 145px
+}
+
+.appDetailImageBox {
+    aspect-ratio: 9/16;
+    justify-self: center;
+    max-height: 210px;
+    max-width: 118px;
+    width: 100%
+}
+
+.portfolioImageEmpty {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    justify-content: center
+}
+
+.portfolioImageEmpty b {
+    color: #a8dff1;
+    font-size: .62rem;
+    font-weight: 500
+}
+
+.portfolioImageEmpty small {
+    color: #617d95;
+    font-size: .49rem
+}
+
+.portfolioImageBox>img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%
+}
+
+.portfolioImagePicker {
+    cursor: pointer;
+    inset: 0;
+    position: absolute !important;
+    z-index: 1
+}
+
+.portfolioImagePicker input {
+    display: none
+}
+
+.portfolioImageBox:hover {
+    border-color: #59d4ff;
+    box-shadow: inset 0 0 0 1px rgb(89 212 255 / 18%)
+}
+
+.portfolioImageBox>button {
+    align-items: center;
+    background: #4a1728;
+    border: 1px solid #8c3651;
+    border-radius: .45rem;
+    color: #ff8dab;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    position: absolute;
+    right: .55rem;
+    top: .55rem;
+    width: 30px;
+    z-index: 2
+}
+
+.portfolioImageField>small {
+    color: #657f97;
+    font-size: .52rem
+}
+
+.portfolioImageField>span em {
+    color: #62d9ff;
+    float: right;
+    font-size: .5rem;
+    font-style: normal;
+    font-weight: 450
+}
+
+.portfolioMediaGrid .switches {
+    display: grid;
+    gap: .65rem;
+    grid-column: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.portfolioMediaGrid .switches label {
+    align-items: center;
+    min-height: 58px;
+    padding: .65rem .75rem
+}
+
+.portfolioMediaGrid .switches label>span {
+    display: grid;
+    gap: .12rem;
+    min-width: 0
+}
+
+.portfolioMediaGrid .switches b {
+    color: #dceaf7;
+    font-size: .6rem;
+    font-weight: 500
+}
+
+.portfolioMediaGrid .switches small {
+    color: #6f879e;
+    font-size: .48rem;
+    line-height: 1.35
+}
+
+.page footer .cancelAction {
+    background: transparent;
+    border-color: #35506d;
+    color: #9eb0c2;
+    cursor: pointer;
+    margin-right: .65rem
+}
+
+.page footer .cancelAction:hover {
+    background: #12243a;
+    border-color: #476a8c;
+    color: #edf6ff
+}
+
+.page footer .createAction {
+    background: linear-gradient(110deg, #2376e8, #2daedc);
+    border-color: #4dbde7;
+    box-shadow: 0 8px 24px rgb(37 139 221 / 20%);
+    cursor: pointer;
+    font-weight: 550
+}
+
+.page footer .createAction:hover:not(:disabled) {
+    box-shadow: 0 10px 28px rgb(45 174 220 / 30%);
+    transform: translateY(-1px)
+}
+
+.page footer .createAction:disabled {
+    cursor: not-allowed;
+    opacity: .6
+}
+
+@media(max-width:850px) {
+    .portfolioForm .editor {
+        grid-template-columns: 1fr
+    }
+
+    .portfolioPreview {
+        position: static
+    }
+
+    .portfolioMediaGrid {
+        grid-template-columns: 1fr
+    }
+}
+
+@media(max-width:600px) {
+    .portfolioMediaGrid {
+        padding: .7rem
+    }
+
+    .portfolioImageBox {
+        min-height: 145px
+    }
+
+    .portfolioMediaGrid .switches {
+        grid-template-columns: 1fr
+    }
+
+    .portfolioImageFields {
+        grid-template-columns: 1fr
+    }
+
+    .posterImageField {
+        grid-column: auto
+    }
+}
+
+.previewPublished {
+    background: rgb(53 205 139 / 12%);
+    border: 1px solid rgb(53 205 139 / 35%);
+    color: #63e2a8
+}
+
+.previewDraft {
+    background: rgb(255 185 83 / 10%);
+    border: 1px solid rgb(255 185 83 / 30%);
+    color: #ffc46e
+}
+
+.errorMessage {
+    background: rgb(72 16 31 / 72%) !important;
+    border-color: #a83b58 !important;
+    color: #ff9caf !important
+}
+
+.uploadError {
+    align-items: flex-start;
+    background: rgb(78 14 31 / 82%);
+    border: 1px solid #b53d5c;
+    border-radius: .48rem;
+    color: #ff9caf;
+    display: flex;
+    font-size: .56rem;
+    font-weight: 500;
+    line-height: 1.55;
+    margin: 0;
+    padding: .55rem .65rem;
+    width: 100%
+}
+
+.portfolioImageField:has(.uploadError) .portfolioImageBox {
+    border-color: #d64b6c;
+    box-shadow: 0 0 0 2px rgb(214 75 108 / 16%), inset 0 0 22px rgb(121 19 46 / 14%)
+}
+
+.portfolioImageField:has(.uploadError)>span em {
+    color: #ff8ca6
+}

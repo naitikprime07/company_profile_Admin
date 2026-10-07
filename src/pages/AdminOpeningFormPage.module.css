@@ -1,0 +1,257 @@
+:global(*) {
+    box-sizing: border-box
+}
+
+.page {
+    background: radial-gradient(circle at 85% 5%, rgb(47 125 246/9%), transparent 28rem), #07101e;
+    color: #edf5ff;
+    font-family: Inter, system-ui, sans-serif;
+    min-height: 100vh
+}
+
+.page>header {
+    align-items: center;
+    background: #0b1626;
+    border-bottom: 1px solid #20344e;
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 4vw, 4rem)
+}
+
+.page>header div,
+.page>header a {
+    align-items: center;
+    display: flex;
+    gap: .5rem
+}
+
+.page>header div {
+    font-size: .76rem;
+    font-weight: 800
+}
+
+.page>header svg,
+.page>header a {
+    color: #69d9ff
+}
+
+.page>header a {
+    font-size: .64rem;
+    text-decoration: none
+}
+
+.content {
+    margin: auto;
+    max-width: 960px;
+    padding: 2rem 1rem 4rem
+}
+
+.heading {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem
+}
+
+.heading>span {
+    align-items: center;
+    background: #163553;
+    border: 1px solid #315b7d;
+    border-radius: .75rem;
+    color: #69d9ff;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    width: 3rem
+}
+
+.heading small {
+    color: #61d7ff;
+    font: .5rem monospace;
+    letter-spacing: .12em
+}
+
+.heading h1 {
+    font-size: 1.5rem;
+    margin: .25rem 0
+}
+
+.heading p {
+    color: #8599af;
+    font-size: .68rem;
+    margin: 0
+}
+
+.page form {
+    display: grid;
+    gap: 1rem
+}
+
+.page form>section {
+    background: linear-gradient(145deg, #101d30, #0c1727);
+    border: 1px solid #233853;
+    border-radius: .9rem;
+    display: grid;
+    gap: 1rem;
+    padding: 1.3rem
+}
+
+.page form h2 {
+    border-bottom: 1px solid #20334b;
+    font-size: .82rem;
+    margin: 0;
+    padding-bottom: .8rem
+}
+
+.page label {
+    color: #b8c7d7;
+    display: grid;
+    font-size: .65rem;
+    font-weight: 700;
+    gap: .45rem
+}
+
+.page input,
+.page select,
+.page textarea {
+    background: #0c192a;
+    border: 1px solid #2b435f;
+    border-radius: .55rem;
+    color: #e1edf9;
+    font: inherit;
+    outline: 0;
+    padding: .75rem;
+    width: 100%
+}
+
+.page input:focus,
+.page select:focus,
+.page textarea:focus {
+    border-color: #4e82a8;
+    box-shadow: 0 0 0 3px rgb(91 213 255/7%)
+}
+
+.page textarea {
+    line-height: 1.6;
+    resize: vertical
+}
+
+.two {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr
+}
+
+.toggle {
+    align-items: center;
+    background: #0b192a;
+    border: 1px solid #233a55;
+    border-radius: .6rem;
+    cursor: pointer;
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    padding: .7rem
+}
+
+.toggle input {
+    display: none
+}
+
+.toggle>span {
+    background: #243951;
+    border-radius: 999px;
+    height: 20px;
+    position: relative;
+    width: 36px
+}
+
+.toggle>span:after {
+    background: #8295a9;
+    border-radius: 50%;
+    content: "";
+    height: 14px;
+    left: 3px;
+    position: absolute;
+    top: 3px;
+    transition: .2s;
+    width: 14px
+}
+
+.toggle input:checked+span {
+    background: #1e6590
+}
+
+.toggle input:checked+span:after {
+    background: #6cddff;
+    transform: translateX(16px)
+}
+
+.toggle div {
+    display: grid;
+    gap: .15rem
+}
+
+.toggle small {
+    color: #72879e;
+    font-size: .53rem;
+    font-weight: 500
+}
+
+.page form>footer {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    gap: .6rem
+}
+
+.page form>footer a,
+.page form>footer button {
+    border-radius: .55rem;
+    font-size: .65rem;
+    font-weight: 750;
+    padding: .7rem .9rem
+}
+
+.page form>footer a {
+    border: 1px solid #2b425e;
+    color: #8da1b7;
+    text-decoration: none
+}
+
+.page form>footer button {
+    align-items: center;
+    background: #19456d;
+    border: 1px solid #3b7197;
+    color: #79dfff;
+    cursor: pointer;
+    display: flex;
+    gap: .4rem
+}
+
+.error {
+    background: #351c27;
+    border: 1px solid #693044;
+    border-radius: .6rem;
+    color: #ff9db3;
+    padding: .8rem
+}
+
+.state {
+    align-content: center;
+    background: #07101e;
+    color: #dce9f7;
+    display: grid;
+    justify-items: center;
+    min-height: 100vh
+}
+
+@media(max-width:620px) {
+    .two {
+        grid-template-columns: 1fr
+    }
+
+    .heading h1 {
+        font-size: 1.2rem
+    }
+}

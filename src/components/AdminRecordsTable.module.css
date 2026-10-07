@@ -1,0 +1,457 @@
+.tools {
+    align-items: center;
+    background: #0b1727;
+    border-bottom: 1px solid #1d3048;
+    display: flex;
+    gap: .7rem;
+    padding: .8rem 1.2rem
+}
+
+.tools>label {
+    align-items: center;
+    background: #101f33;
+    border: 1px solid #29415e;
+    border-radius: .6rem;
+    color: #607a94;
+    display: flex;
+    gap: .5rem;
+    max-width: 360px;
+    padding: 0 .7rem;
+    width: 100%
+}
+
+.tools input {
+    background: transparent;
+    border: 0;
+    color: #dbe8f6;
+    font-size: .62rem;
+    height: 36px;
+    outline: 0;
+    width: 100%
+}
+
+.tools>div:last-child {
+    display: flex;
+    gap: .3rem;
+    margin-left: auto
+}
+
+.tools>div:last-child button {
+    background: #101f32;
+    border: 1px solid #273d58;
+    border-radius: 999px;
+    color: #8397ae;
+    cursor: pointer;
+    font-size: .55rem;
+    padding: .45rem .6rem
+}
+
+.tools .active {
+    background: #173a5e !important;
+    border-color: #386c91 !important;
+    color: #6cddff !important
+}
+
+.summary {
+    background: #091523;
+    border-bottom: 1px solid #1d3048;
+    color: #71869e;
+    font-size: .57rem;
+    padding: .5rem 1.2rem
+}
+
+.wrap {
+    overflow: auto
+}
+
+.wrap table {
+    min-width: 850px
+}
+
+.wrap td {
+    height: 62px;
+    vertical-align: middle
+}
+
+.wrap td,
+.wrap th {
+    padding: .75rem 1rem
+}
+
+.wrap td {
+    color: #a7b8c9;
+    font-size: .6rem
+}
+
+.wrap a {
+    align-items: center;
+    color: #65d7ff;
+    display: flex;
+    gap: .3rem;
+    text-decoration: none
+}
+
+.wrap b {
+    background: #13263b;
+    border: 1px solid #2b425d;
+    border-radius: 999px;
+    color: #6bd9ff;
+    font-size: .53rem;
+    padding: .32rem .5rem
+}
+
+.actions {
+    display: flex;
+    gap: .35rem
+}
+
+.actions button {
+    align-items: center;
+    background: #142b45;
+    border: 1px solid #315270;
+    border-radius: .45rem;
+    color: #67d8ff;
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px
+}
+
+.actions button:last-child {
+    background: #321c27;
+    border-color: #603044;
+    color: #ff8fa9
+}
+
+.pagination {
+    align-items: center;
+    background: #0a1626;
+    border-top: 1px solid #1d3048;
+    display: flex;
+    justify-content: space-between;
+    padding: .8rem 1.1rem
+}
+
+.pagination span {
+    color: #71869d;
+    font-size: .57rem
+}
+
+.pagination>div {
+    display: flex;
+    gap: .3rem
+}
+
+.pagination button {
+    align-items: center;
+    background: #102238;
+    border: 1px solid #29435f;
+    border-radius: .45rem;
+    color: #91a7bc;
+    cursor: pointer;
+    display: flex;
+    font-size: .55rem;
+    height: 31px;
+    justify-content: center;
+    padding: 0 .55rem
+}
+
+.pagination .current {
+    background: #19476f;
+    border-color: #3b739a;
+    color: #76ddff
+}
+
+.pagination button:disabled {
+    opacity: .4
+}
+
+.empty {
+    color: #8297ad;
+    padding: 2rem;
+    text-align: center
+}
+
+@media(max-width:850px) {
+    .tools {
+        align-items: stretch;
+        flex-wrap: wrap
+    }
+
+    .tools>label {
+        max-width: none
+    }
+
+    .tools>div:last-child {
+        margin-left: 0;
+        overflow: auto;
+        width: 100%
+    }
+}
+
+.tools input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none
+}
+
+.searchClear {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #69839d;
+    cursor: pointer;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    padding: .2rem
+}
+
+.searchClear:hover {
+    color: #71dcff
+}
+
+/* Match the Incoming Inquiries table structure and behavior. */
+.wrap {
+    max-height: calc(100vh - 355px);
+    overscroll-behavior: contain;
+    overflow: auto;
+    scrollbar-color: #315b7b #081422;
+    scrollbar-width: thin;
+    width: 100%
+}
+
+.wrap::-webkit-scrollbar {
+    height: 8px;
+    width: 8px
+}
+
+.wrap::-webkit-scrollbar-track {
+    background: #081422
+}
+
+.wrap::-webkit-scrollbar-thumb {
+    background: #315b7b;
+    border-radius: 999px
+}
+
+.wrap table {
+    min-width: 760px;
+    width: 100%
+}
+
+.wrap thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2
+}
+
+.wrap th {
+    padding: .8rem 1rem
+}
+
+.wrap td {
+    height: 64px;
+    padding: .85rem 1rem
+}
+
+.wrap td:first-child {
+    min-width: 190px
+}
+
+.wrap td strong {
+    font-size: .68rem
+}
+
+.wrap td a {
+    font-size: .54rem;
+    margin-bottom: .25rem
+}
+
+.wrap td>b {
+    display: inline-block;
+    white-space: nowrap
+}
+
+.actions button {
+    flex: none
+}
+
+.pagination>div,
+.pagination>div>span {
+    align-items: center;
+    display: flex;
+    gap: .3rem
+}
+
+.pagination i {
+    color: #63788e;
+    font-style: normal
+}
+
+.pagination .current {
+    background: #19476f;
+    border-color: #3b739a;
+    color: #76ddff
+}
+
+@media(max-width:600px) {
+    .pagination {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: .7rem
+    }
+
+    .pagination>div {
+        max-width: 100%;
+        overflow: auto
+    }
+}
+
+/* Fill the shared admin panel and keep pagination on its bottom edge. */
+.tools,
+.summary,
+.pagination {
+    flex: none
+}
+
+.wrap {
+    flex: 1;
+    height: auto;
+    max-height: none;
+    min-height: 0
+}
+
+.empty {
+    flex: 1;
+    height: auto;
+    min-height: 0
+}
+
+.wrap table {
+    table-layout: fixed
+}
+
+.wrap th:nth-child(1) {
+    width: 21%
+}
+
+.wrap th:nth-child(2) {
+    width: 17%
+}
+
+.wrap th:nth-child(3) {
+    width: 13%
+}
+
+.wrap th:nth-child(4) {
+    width: 20%
+}
+
+.wrap th:nth-child(5) {
+    width: 9%
+}
+
+.wrap th:nth-child(6) {
+    width: 8%
+}
+
+.wrap th:nth-child(7) {
+    width: 10%
+}
+
+.wrap td {
+    min-width: 0;
+    overflow: hidden
+}
+
+.wrap td:nth-child(4) {
+    display: table-cell;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    word-break: break-word
+}
+
+.pagination {
+    margin-top: auto;
+    min-height: 58px
+}
+
+/* Keep the records area stable while API pagination changes the current page. */
+.wrap {
+    height: 420px;
+    max-height: 420px
+}
+
+.empty {
+    align-items: center;
+    display: flex;
+    height: 420px;
+    justify-content: center;
+    margin: 0
+}
+
+.pagination {
+    min-height: 58px
+}
+
+@media(max-height:720px) {
+
+    .wrap,
+    .empty {
+        height: 330px;
+        max-height: 330px
+    }
+}
+
+@media(max-width:600px) {
+
+    .wrap,
+    .empty {
+        height: 360px;
+        max-height: 360px
+    }
+}
+
+/* Final Inquiry-style sizing: scroll body fills the panel, pagination is last. */
+.tools,
+.summary,
+.pagination {
+    flex: none
+}
+
+.wrap {
+    flex: 1;
+    height: auto;
+    max-height: none;
+    min-height: 0
+}
+
+.empty {
+    flex: 1;
+    height: auto;
+    max-height: none;
+    min-height: 0
+}
+
+.pagination {
+    margin-top: 0;
+    min-height: 58px
+}
+
+.wrap td {
+    font-size: .66rem
+}
+
+.wrap td strong {
+    font-size: .74rem
+}
+
+.wrap td a {
+    font-size: .61rem
+}
+
+.wrap td>b,
+.wrap b {
+    font-size: .6rem
+}
