@@ -351,3 +351,43 @@ export const updateHomeStat = (id, data) =>
   });
 export const deleteHomeStat = (id) =>
   request(`/admin/home-stats/${id}`, { method: "DELETE" });
+
+export const getAdminAboutGallery = () => request("/admin/about-gallery");
+export const createAboutGalleryImage = (data) =>
+  request("/admin/about-gallery", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+export const updateAboutGalleryImage = (id, data) =>
+  request(`/admin/about-gallery/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+  });
+export const deleteAboutGalleryImage = (id) =>
+  request(`/admin/about-gallery/${id}`, { method: "DELETE" });
+export const deleteUnattachedAboutGalleryImage = (imageUrl) =>
+  request("/admin/about-gallery/image", {
+    method: "DELETE",
+    body: JSON.stringify({ imageUrl }),
+  });
+export const uploadAboutGalleryImage = async (file, previousImage = "") => {
+  const signed = await request("/admin/about-gallery/image-upload-url", {
+    method: "POST",
+    body: JSON.stringify({
+      fileName: file.name,
+      contentType: file.type,
+      size: file.size,
+      previousImage,
+    }),
+  });
+  const response = await fetch(signed.uploadUrl, {
+    method: "PUT",
+    headers: { "Content-Type": file.type },
+    body: file,
+  });
+  if (!response.ok)
+    throw new Error(
+      "Image upload failed. Check the R2 CORS configuration and try again.",
+    );
+  return signed.fileUrl;
+};

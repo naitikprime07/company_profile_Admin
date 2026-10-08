@@ -7,6 +7,7 @@ import {
   Inbox,
   Files,
   Eye,
+  Images,
   ChevronLeft,
   ChevronRight,
   LayoutDashboard,
@@ -51,6 +52,7 @@ import AdminLeadershipManager from "../components/AdminLeadershipManager";
 import AdminBlogManager from "../components/AdminBlogManager";
 import AdminPortfolioManager from "../components/AdminPortfolioManager";
 import AdminHomeStatsManager from "../components/AdminHomeStatsManager";
+import AdminAboutGalleryManager from "../components/AdminAboutGalleryManager";
 
 const STATUS_LABELS = {
   new: "New",
@@ -74,6 +76,7 @@ const VIEW_TITLES = {
   blogs: "Blog management",
   portfolio: "Portfolio management",
   stats: "Homepage stats",
+  gallery: "Company images",
 };
 const OPENINGS_PER_PAGE = 6;
 function AdminPage() {
@@ -580,6 +583,14 @@ function AdminPage() {
             <Activity size={18} />
             <span className={styles.navText}>Homepage stats</span>
           </button>
+          <button
+            className={activeView === "gallery" ? styles.navActive : ""}
+            onClick={() => changeView("gallery")}
+            title="Company images"
+          >
+            <Images size={18} />
+            <span className={styles.navText}>Company images</span>
+          </button>
         </nav>
         <footer className={styles.sidebarFooter}>
           <button className={styles.logout} onClick={logout} title="Log out">
@@ -1070,6 +1081,8 @@ function AdminPage() {
           <AdminLeadershipManager confirmDelete={confirmDelete} />
         ) : activeView === "stats" ? (
           <AdminHomeStatsManager confirmDelete={confirmDelete} />
+        ) : activeView === "gallery" ? (
+          <AdminAboutGalleryManager confirmDelete={confirmDelete} />
         ) : (
           <div className={styles.openingLayout}>
             <div className={styles.openingControlsPanel}>
