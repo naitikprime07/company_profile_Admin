@@ -2094,6 +2094,23 @@ td {
     min-height: 0
 }
 
+/* Company images manager reuses the inquiries shell: the viewport is locked so
+   the gallery list scrolls in place and can never spill off the bottom. */
+@media(min-width:721px) {
+    .galleryDashboard {
+        height: 100vh;
+        overflow: hidden
+    }
+
+    .galleryDashboard .content {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+        padding-bottom: 1.2rem
+    }
+}
+
 .inquiriesDashboard .pagination {
     flex: none
 }

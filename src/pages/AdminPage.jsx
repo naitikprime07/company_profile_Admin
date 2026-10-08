@@ -95,6 +95,8 @@ function AdminPage() {
       "#leadership",
       "#blogs",
       "#portfolio",
+      "#stats",
+      "#gallery",
     ].includes(window.location.hash)
       ? window.location.hash.slice(1)
       : sessionStorage.getItem("adminActiveView") || "dashboard",
@@ -472,7 +474,7 @@ function AdminPage() {
   };
   return (
     <main
-      className={`${styles.dashboard} ${sidebarCollapsed ? styles.sidebarCollapsed : ""} ${activeView === "inquiries" ? styles.inquiriesDashboard : ""}`}
+      className={`${styles.dashboard} ${sidebarCollapsed ? styles.sidebarCollapsed : ""} ${activeView === "inquiries" ? styles.inquiriesDashboard : ""} ${activeView === "gallery" ? styles.galleryDashboard : ""}`}
     >
       <aside
         className={styles.sidebar}

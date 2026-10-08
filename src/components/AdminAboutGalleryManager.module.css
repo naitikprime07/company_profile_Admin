@@ -6,23 +6,146 @@
 
 .form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.85rem 1rem;
-  align-items: end;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
   padding: 1.1rem;
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--surface);
 }
 
+@media (max-width: 860px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mediaColumn,
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.boxLabel {
+  color: var(--text-soft);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.boxHint {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.imageBox {
+  aspect-ratio: 16 / 10;
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  max-width: 17rem;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.15s ease;
+}
+
+.imageBox:hover {
+  border-color: var(--accent);
+}
+
+.imageBox img {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.imageEmpty {
+  align-items: center;
+  color: var(--text-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+}
+
+.imageEmpty b {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.imageEmpty small {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.imageInput {
+  cursor: pointer;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.imageBusy {
+  align-items: center;
+  background: rgb(6 10 20 / 65%);
+  color: #fff;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 600;
+  gap: 0.45rem;
+  inset: 0;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+}
+
+.spin {
+  animation: gallerySpin 1s linear infinite;
+}
+
+@keyframes gallerySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.imageRemove {
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: #ff8b8b;
+  cursor: pointer;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  position: absolute;
+  right: 0.6rem;
+  top: 0.6rem;
+  width: 30px;
+  z-index: 3;
+}
+
+.imageRemove:hover {
+  border-color: #ff8b8b;
+}
+
 .field {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-}
-
-.fieldWide {
-  grid-column: 1 / -1;
 }
 
 .field label {
@@ -55,7 +178,6 @@
   gap: 0.5rem;
   font-size: 0.85rem;
   color: var(--text);
-  padding-bottom: 0.55rem;
 }
 
 .check input {
@@ -64,73 +186,11 @@
   accent-color: var(--accent);
 }
 
-.fileRow {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.fileRow input[type="file"] {
-  color: var(--text-soft);
-  font-size: 0.82rem;
-  max-width: 100%;
-}
-
-.uploadButton {
-  align-items: center;
-  background: transparent;
-  border: 1px solid var(--accent);
-  border-radius: 10px;
-  color: var(--accent);
-  cursor: pointer;
-  display: inline-flex;
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: 600;
-  gap: 0.4rem;
-  padding: 0.55rem 0.95rem;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.uploadButton:hover:not(:disabled) {
-  background: var(--accent);
-  color: #fff;
-}
-
-.uploadButton:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-
-.preview {
-  align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--bg);
-  display: flex;
-  gap: 0.9rem;
-  margin-top: 0.5rem;
-  overflow: hidden;
-  padding: 0.6rem 0.9rem;
-}
-
-.preview img {
-  border-radius: 8px;
-  height: 64px;
-  object-fit: cover;
-  width: 96px;
-}
-
-.preview span {
-  color: var(--text-soft);
-  font-size: 0.78rem;
-}
-
 .formActions {
   display: flex;
   gap: 0.6rem;
-  grid-column: 1 / -1;
+  margin-top: auto;
+  padding-top: 0.25rem;
 }
 
 .submit {
@@ -162,7 +222,6 @@
 }
 
 .formError {
-  grid-column: 1 / -1;
   color: #ff6b6b;
   font-size: 0.82rem;
   margin: 0;
@@ -170,6 +229,49 @@
 
 .rowInactive {
   opacity: 0.55;
+}
+
+.listScroll {
+  max-height: 28rem;
+  overflow: auto;
+  scrollbar-color: #315b7b #081422;
+  scrollbar-width: thin;
+}
+
+.listScroll thead th {
+  background: var(--panel, #101b2d);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Desktop: the admin shell owns the viewport, so the gallery workspace is
+   bounded to the visible height. The form stays fixed at the top and only the
+   image list scrolls internally — the panel can never spill off-screen. */
+@media (min-width: 721px) {
+  .workspace {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+  }
+
+  .formPanel {
+    flex: 0 0 auto;
+  }
+
+  .listPanel {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .listScroll {
+    flex: 1;
+    max-height: none;
+    min-height: 0;
+  }
 }
 
 .muted {
@@ -180,11 +282,11 @@
 
 .thumb {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 6px;
   display: block;
-  height: 64px;
+  height: 44px;
   object-fit: cover;
-  width: 96px;
+  width: 66px;
 }
 
 .badge {

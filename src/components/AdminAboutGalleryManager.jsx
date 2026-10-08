@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Eye, EyeOff, Pencil, Trash2, Upload } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  ImagePlus,
+  Loader2,
+  Pencil,
+  Trash2,
+} from "lucide-react";
 import {
   createAboutGalleryImage,
   deleteAboutGalleryImage,
@@ -92,8 +99,9 @@ export default function AdminAboutGalleryManager({ confirmDelete }) {
     try {
       const previousInForm = form.image;
       const fileUrl = await uploadAboutGalleryImage(file);
-      // The freshly uploaded URL is unattached until the record is saved.
-      if (previousInForm !== unattachedRef.current) dropUnattached();
+      // The freshly uploaded URL is unattached until the record is saved, so a
+      // replaced unattached upload must be cleaned from R2 immediately.
+      if (previousInForm === unattachedRef.current) dropUnattached();
       unattachedRef.current = fileUrl;
       setForm((prev) => ({ ...prev, image: fileUrl }));
     } catch (uploadError) {
@@ -102,6 +110,13 @@ export default function AdminAboutGalleryManager({ confirmDelete }) {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
     }
+  };
+
+  const clearImage = () => {
+    setForm((prev) => ({ ...prev, image: "" }));
+    dropUnattached();
+    setFormError("");
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const submit = async (event) => {
@@ -164,7 +179,7 @@ export default function AdminAboutGalleryManager({ confirmDelete }) {
 
   return (
     <div className={styles.workspace}>
-      <section className={adminStyles.panel}>
+      <section className={`${adminStyles.panel} ${styles.formPanel}`}>
         <div className={adminStyles.panelHead}>
           <div>
             <h2>Company images</h2>
@@ -178,96 +193,116 @@ export default function AdminAboutGalleryManager({ confirmDelete }) {
         </div>
 
         <form className={styles.form} onSubmit={submit}>
-          <div className={`${styles.field} ${styles.fieldWide}`}>
-            <label htmlFor="galleryAlt">Caption (optional)</label>
-            <input
-              id="galleryAlt"
-              type="text"
-              maxLength={120}
-              value={form.alt}
-              onChange={(event) =>
-                setForm((prev) => ({ ...prev, alt: event.target.value }))
-              }
-              placeholder="Team brainstorming at the office"
-            />
-          </div>
-          <div className={styles.field}>
-            <label htmlFor="galleryOrder">Order</label>
-            <input
-              id="galleryOrder"
-              type="number"
-              min="0"
-              step="1"
-              value={form.order}
-              onChange={(event) =>
-                setForm((prev) => ({ ...prev, order: event.target.value }))
-              }
-              placeholder="0"
-            />
-          </div>
-          <label className={styles.check}>
-            <input
-              type="checkbox"
-              checked={form.isActive}
-              onChange={(event) =>
-                setForm((prev) => ({ ...prev, isActive: event.target.checked }))
-              }
-            />
-            Show on About page
-          </label>
-
-          <div className={`${styles.field} ${styles.fieldWide}`}>
-            <label htmlFor="galleryFile">Image (JPG / PNG / WEBP, max 5 MB)</label>
-            <div className={styles.fileRow}>
+          <div className={styles.mediaColumn}>
+            <span className={styles.boxLabel}>Image *</span>
+            <div className={styles.imageBox}>
+              {form.image ? (
+                <img src={form.image} alt="Selected company image preview" />
+              ) : (
+                <div className={styles.imageEmpty}>
+                  <ImagePlus size={24} />
+                  <b>Add company image</b>
+                  <small>JPG, PNG or WEBP · max 5 MB</small>
+                </div>
+              )}
               <input
-                id="galleryFile"
                 ref={fileInputRef}
                 type="file"
+                className={styles.imageInput}
                 accept="image/jpeg,image/png,image/webp"
                 onChange={onFileSelected}
                 disabled={uploading}
               />
-              <button
-                type="button"
-                className={styles.uploadButton}
-                onClick={() => fileInputRef.current?.click()}
-                disabled={uploading}
-              >
-                <Upload size={15} />
-                {uploading ? "Uploading..." : "Upload image"}
-              </button>
+              {uploading && (
+                <div className={styles.imageBusy}>
+                  <Loader2 size={20} className={styles.spin} />
+                  <span>Uploading...</span>
+                </div>
+              )}
+              {form.image && !editingId && !uploading && (
+                <button
+                  type="button"
+                  className={styles.imageRemove}
+                  title="Remove image"
+                  onClick={clearImage}
+                  disabled={saving}
+                >
+                  <Trash2 size={14} />
+                </button>
+              )}
             </div>
-            {form.image && (
-              <div className={styles.preview}>
-                <img src={form.image} alt="Selected preview" />
-                <span>Preview — saved records keep this image.</span>
-              </div>
-            )}
+            <small className={styles.boxHint}>
+              Click anywhere in the box to browse. The image appears on the
+              About page once you save.
+            </small>
           </div>
 
-          {formError && <p className={styles.formError}>{formError}</p>}
-          <div className={styles.formActions}>
-            <button
-              type="submit"
-              className={styles.submit}
-              disabled={saving || uploading}
-            >
-              {editingId ? "Save changes" : "Add image"}
-            </button>
-            {editingId && (
+          <div className={styles.infoColumn}>
+            <div className={styles.field}>
+              <label htmlFor="galleryAlt">Caption (optional)</label>
+              <input
+                id="galleryAlt"
+                type="text"
+                maxLength={120}
+                value={form.alt}
+                onChange={(event) =>
+                  setForm((prev) => ({ ...prev, alt: event.target.value }))
+                }
+                placeholder="Team brainstorming at the office"
+              />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="galleryOrder">Order</label>
+              <input
+                id="galleryOrder"
+                type="number"
+                min="0"
+                step="1"
+                value={form.order}
+                onChange={(event) =>
+                  setForm((prev) => ({ ...prev, order: event.target.value }))
+                }
+                placeholder="0"
+              />
+            </div>
+            <label className={styles.check}>
+              <input
+                type="checkbox"
+                checked={form.isActive}
+                onChange={(event) =>
+                  setForm((prev) => ({
+                    ...prev,
+                    isActive: event.target.checked,
+                  }))
+                }
+              />
+              Show on About page
+            </label>
+
+            {formError && <p className={styles.formError}>{formError}</p>}
+            <div className={styles.formActions}>
               <button
-                type="button"
-                className={styles.cancel}
-                onClick={resetForm}
+                type="submit"
+                className={styles.submit}
+                disabled={saving || uploading}
               >
-                Cancel
+                {editingId ? "Save changes" : "Add image"}
               </button>
-            )}
+              {editingId && (
+                <button
+                  type="button"
+                  className={styles.cancel}
+                  onClick={resetForm}
+                >
+                  Cancel
+                </button>
+              )}
+            </div>
           </div>
         </form>
       </section>
 
-      <section className={adminStyles.panel}>
+      <section className={`${adminStyles.panel} ${styles.listPanel}`}>
         {error && <p className={adminStyles.empty}>{error}</p>}
         {loading ? (
           <p className={adminStyles.empty}>Loading images...</p>
@@ -277,7 +312,7 @@ export default function AdminAboutGalleryManager({ confirmDelete }) {
             page strip appears automatically once images exist.
           </p>
         ) : (
-          <div className={adminStyles.inquiryTableWrap}>
+          <div className={styles.listScroll}>
             <table className={adminStyles.inquiryTable}>
               <thead>
                 <tr>
