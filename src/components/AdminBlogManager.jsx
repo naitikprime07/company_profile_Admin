@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ENVIRONMENT } from "../constants/environment";
 import { deleteBlog, searchAdminBlogs } from "../services/adminService";
 import adminStyles from "../pages/AdminPage.module.css";
 import styles from "./AdminBlogManager.module.css";
@@ -201,7 +202,11 @@ export default function AdminBlogManager({ confirmDelete }) {
                             title="View article"
                             aria-label={`View ${post.title}`}
                             onClick={() =>
-                              window.open(`/blog/${post.slug}`, "_blank")
+                              window.open(
+                                `${ENVIRONMENT.publicSiteUrl}/blog/${post.slug}`,
+                                "_blank",
+                                "noopener,noreferrer",
+                              )
                             }
                           >
                             <Eye size={15} />

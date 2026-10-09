@@ -19,6 +19,19 @@ const resolveApiBaseUrl = () =>
     ? PRODUCTION_API_BASE_URL
     : "http://localhost:5000/api");
 
+// The public marketing site runs on its OWN origin (separate from the admin).
+// "View" actions that open public pages (e.g. a blog article) must target this
+// base URL, not the admin origin which has no /blog/:slug route. In local dev
+// the public site is served on the FE dev port (5173); on Vercel set
+// VITE_PUBLIC_SITE_URL to the deployed public site origin.
+const PRODUCTION_PUBLIC_SITE_URL =
+  readEnvironmentValue("VITE_PUBLIC_SITE_URL", "").replace(/\/$/, "");
+
+const resolvePublicSiteUrl = () =>
+  PRODUCTION_PUBLIC_SITE_URL ||
+  (import.meta.env.PROD ? "" : "http://localhost:5173");
+
 export const ENVIRONMENT = Object.freeze({
   apiBaseUrl: resolveApiBaseUrl().replace(/\/$/, ""),
+  publicSiteUrl: resolvePublicSiteUrl(),
 });
