@@ -157,10 +157,12 @@
 }
 
 .field input {
-  background: var(--bg);
-  border: 1px solid var(--line);
+  /* Match the shared admin field-box look (see .openingForm fields) instead of
+     the near-black var(--bg) that made these inputs read as black holes. */
+  background: #14243a;
+  border: 1px solid #304763;
   border-radius: 10px;
-  color: var(--text);
+  color: #eaf3ff;
   font: inherit;
   font-size: 0.9rem;
   padding: 0.6rem 0.7rem;

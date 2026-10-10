@@ -65,6 +65,20 @@ input[type="search"]::-webkit-search-decoration {
   appearance: none;
 }
 
+/* The native number spinners render as white boxes that clash with the dark
+   theme; hide them panel-wide (typing, arrows keys and scrolling still work). */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 /* Keep long user-managed content inside its container throughout the app. */
 :where(h1, h2, h3, h4, h5, h6, p, li, td, th, a, span, strong, small, label) {
   overflow-wrap: anywhere;
